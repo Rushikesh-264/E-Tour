@@ -1,0 +1,77 @@
+Q1. 
+
+import java.lang.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter two nos: ");
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        
+        // a=a+b;
+        // b=a-b;
+        // a=a-b;
+        
+        a=a*b;
+        b=a/b;
+        a=a/b;
+        
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        
+        System.out.println("After swap:");
+        System.out.println("a: "+ a);
+        System.out.println("b: "+ b);
+        }
+}
+
+
+Q2. 
+import java.lang.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter three nos: ");
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int c=sc.nextInt();
+        
+        int highest=(a>b?(a>c?a:b):(b>c)? b:c);
+        System.out.println(highest);
+        
+    
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+Q3.
+import java.lang.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a no: ");
+        int a=sc.nextInt();
+        
+        
+        if(a%3==0)
+        System.out.println("divisible by 3");
+        if(a%7==0)
+        System.out.println("divisible by 7");
+        }
+}
