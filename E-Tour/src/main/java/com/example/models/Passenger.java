@@ -1,12 +1,8 @@
-package com.example.Models;
+package com.example.models;
 
 import java.sql.Date;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Passenger {
@@ -15,8 +11,8 @@ public class Passenger {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int Paxid;
 	
-	@JoinColumn(name="", referencedColumnName="", nullable=false)
-	private BookingHeader bookingheader;
+	@JoinColumn(name="bookingID", referencedColumnName="bookingID", nullable=false)
+	//private BookingHeader bookingheader;
 	
 	private String Paxname;
 	
@@ -54,9 +50,5 @@ public class Passenger {
 	private String Type;
 	private double Amount;
 	
-	@Override
-	public String toString() {
-		return "Passenger [Paxid=" + Paxid + ", Paxname=" + Paxname + ", Birthdate=" + Birthdate + ", Type=" + Type
-				+ ", Amount=" + Amount + "]";
-	}
+	
 }
