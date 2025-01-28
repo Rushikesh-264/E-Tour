@@ -37,6 +37,14 @@ public class ItenaryMaster {
 		return tours;
 	}
 
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
 	public void setTours(Tours tours) {
 		this.tours = tours;
 	}
@@ -50,5 +58,7 @@ public class ItenaryMaster {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tourId",nullable=false)
 	private Tours tours;
+	
+	private String images;
 	
 }

@@ -45,11 +45,11 @@ public class Tours {
 		this.durationNights = durationNights;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -74,7 +74,7 @@ public class Tours {
 	@Column(nullable=false)
 	private String durationNights;
 	@Column(nullable=false)
-	private int price;
+	private double price;
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)

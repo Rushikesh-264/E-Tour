@@ -16,10 +16,10 @@ public class CategoryMaster {
 	public void setCatMaster_id(int CatMaster_id) {
 		catMaster_id = CatMaster_id;
 	}
-	public String getSubCat_Id() {
+	public int getSubCat_Id() {
 		return SubCat_Id;
 	}
-	public void setSubCat_Id(String subCat_Id) {
+	public void setSubCat_Id(int subCat_Id) {
 		SubCat_Id = subCat_Id;
 	}
 	public String getCategory_Name() {
@@ -42,11 +42,11 @@ public class CategoryMaster {
 	}
 	
 	
-	@OneToMany(mappedBy = "categoryMaster", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	
 	
 	
 	@Column(nullable=false)
-	private String SubCat_Id;
+	private int SubCat_Id;
 	@Column(nullable=false,length=100)
 	private String Category_Name;
 	@Column(nullable=false,length=255)

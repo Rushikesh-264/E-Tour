@@ -8,7 +8,6 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -27,7 +26,6 @@ public class Users {
     private String identificationProofId;
     private String gender;
 
-    @Column(nullable = false)
     private Long phoneNumber1;
     private Long phoneNumber2;
 

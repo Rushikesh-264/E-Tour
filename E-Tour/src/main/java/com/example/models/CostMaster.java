@@ -16,11 +16,11 @@ public class CostMaster {
 		CostId = costId;
 	}
 
-	public long getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(long cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 
@@ -65,7 +65,7 @@ public class CostMaster {
 	}
 
 	@Column(nullable=false)
-	private long cost;
+	private double cost;
 	
 	@Column(nullable=false)
 	private int singlePersonCost;
