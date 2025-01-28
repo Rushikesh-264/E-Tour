@@ -1,16 +1,9 @@
-package com.example.Models;
+package com.example.models;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
-@Entity
+import jakarta.persistence.*;
+@Entity	
 public class BookingHeader {
 	
 	@Id
@@ -24,7 +17,7 @@ public class BookingHeader {
 	private int customerID;
 	
 	@Column(nullable=false)
-	private int tourID;
+	private int tourIDs;
 	
 	@Column(nullable=false)
 	private double tourAmount;
@@ -37,11 +30,11 @@ public class BookingHeader {
 		this.bookingID = bookingID;
 	}
 	
-	public int getBookingDate() {
+	public Date getBookingDate() {
 		return bookingDate;
 	}
 	
-	public void setBookingDate(int bookingDate) {
+	public void setBookingDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 	
@@ -54,11 +47,11 @@ public class BookingHeader {
 	}
 	
 	public int getTourID() {
-		return tourID;
+		return tourIDs;
 	}
 	
 	public void setTourID(int tourID) {
-		this.tourID = tourID;
+		this.tourIDs = tourID;
 	}
 	
 	public double getTourAmount() {
@@ -89,17 +82,12 @@ public class BookingHeader {
 	private double totalAmount;
 	
 	@ManyToOne      //one customer can book various tours and hence can have those various bookingrecords refer to that one single customer 
-	@JoinColumn(name="Customerid", referencedColumnName="Cust-id" , nullable=false)
+	@JoinColumn(name="Customerids", nullable=false)
 	private Customer customer;
 	
 	@ManyToOne      //one tour can be booked by multiple customer, so on each booking = bookingheader will refer to same tour 
-	@JoinColumn(name="Tourid",referencedColumnName="Tour-id",nullable=false)
-	private Tour tour;
+	@JoinColumn(name="tourId",nullable=false)
+	private Tours tour;
 	
-	@Override
-	public String toString() {
-		return "BookingHeader [bookingID=" + bookingID + ", bookingDate=" + bookingDate + ", customerID=" + customerID
-				+ ", tourID=" + tourID + ", tourAmount=" + tourAmount + ", tourTaxes=" + tourTaxes + ", totalAmount="
-				+ totalAmount + "]";
-	}
+	
 }

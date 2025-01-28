@@ -3,10 +3,10 @@ package com.example.models;
 import jakarta.persistence.*;
 
 @Entity
-public class Users {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Customerid;
 
     private String email;
 
@@ -30,16 +30,16 @@ public class Users {
     private Long phoneNumber2;
 
     // Default Constructor
-    public Users() {
+    public Customer() {
     }
 
     // Getters and Setters
     public Long getId() {
-        return id;
+        return Customerid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Customerid = id;
     }
 
     public String getEmail() {
