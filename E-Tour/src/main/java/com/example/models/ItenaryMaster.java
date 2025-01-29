@@ -1,5 +1,7 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -57,6 +59,7 @@ public class ItenaryMaster {
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tourId",nullable=false)
+    @JsonIgnore
 	private Tours tours;
 	
 	private String images;

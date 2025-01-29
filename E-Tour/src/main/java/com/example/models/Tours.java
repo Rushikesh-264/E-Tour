@@ -1,5 +1,7 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -79,5 +81,6 @@ public class Tours {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="subCategoryMasterId",nullable=false)
+	@JsonIgnore
 	private SubcategoryMaster subcategoryMaster; 
 }
