@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/customers")
 public class CustomerController {
 
     @Autowired
@@ -23,20 +23,19 @@ public class CustomerController {
         Customer savedCustomer = customerService.saveCustomer(customer);
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
-//
-//    // READ: Get a customer by ID
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
-//        Optional<Customer> customer = customerService.getCustomerById(id);
-//        return customer.map(ResponseEntity::ok)
-//                       .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-//    }
-//
-    // READ: Get a customer by email
-    @GetMapping("/username/{email}")
-    public ResponseEntity<Customer> getCustomerByEmail(@PathVariable String email) {
-        Customer customer = customerService.getCustomerByEmail(email);
-        return customer != null ? ResponseEntity.ok(customer)
-                                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+    // READ: Login Customer
+    @PostMapping("/validate")
+  
+    	public ResponseEntity<Boolean> validateCustomer(@RequestParam String email, @RequestParam String password) {
+            boolean isValid = customerService.validateCustomer(email, password);
+            return ResponseEntity.ok(isValid);
     }
+    @PostMapping("/register")
+    public ResponseEntity<Customer> registerCustomer(@RequestParam String firstName, @RequestParam String lastName,
+                                                      @RequestParam String email, @RequestParam String password) {
+        Customer customer = customerService.registerCustomer(firstName, lastName, email, password);
+        return ResponseEntity.ok(customer);
+    }
+    
 }
