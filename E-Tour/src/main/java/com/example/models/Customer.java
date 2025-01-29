@@ -129,4 +129,11 @@ public class Customer {
     public void setPhoneNumber2(Long phoneNumber2) {
         this.phoneNumber2 = phoneNumber2;
     }
+
+	@Override
+	public String toString() {
+		return "Customer [email=" + email + ", password=" + password + "]";
+	}
+    
+    
 }
