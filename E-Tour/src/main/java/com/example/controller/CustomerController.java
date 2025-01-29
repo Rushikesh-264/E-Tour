@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.models.Customer;
-import com.example.services.CustomerService;
+import com.example.services.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CustomerController {
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     // CREATE: Create or update a customer
     @PostMapping("/")
@@ -24,7 +24,7 @@ public class CustomerController {
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 //
-//    // READ: Get a customer by ID
+    // READ: Get a customer by ID
 //    @GetMapping("/{id}")
 //    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
 //        Optional<Customer> customer = customerService.getCustomerById(id);
