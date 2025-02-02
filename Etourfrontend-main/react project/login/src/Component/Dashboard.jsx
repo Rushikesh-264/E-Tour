@@ -4,6 +4,7 @@ import Categories from "./Categories";
 import CategoriesCard from "./CatergoriesCard";
 import ReviewCard from "./ReviewCard";
 import FeatureSection from "./FeaturesSection";
+import SubCategoriesCard from "./SubCategoriesCard";
 const reviews = [
     { name: "John Doe", review: "Great experience! Highly recommend.", image: "https://randomuser.me/api/portraits/men/10.jpg" },
     { name: "Michel Lee", review: "Amazing service and friendly staff!", image: "https://randomuser.me/api/portraits/men/15.jpg" },
@@ -29,10 +30,11 @@ const slides = [
 
 export default function Dashboard() {
     return (
-        <div style={{width:'100%'}}>
-                <Row className="mx-0">
-                <Col md={12} className="p-0" >
-                    <Carousel>
+        <div >
+            <Row className="mx-0"> 
+            <Col l={12} className="p-0"> 
+
+                    <Carousel style={{ maxWidth: '100%' }}>
                         {slides.map((slide, index) => (
                             <Carousel.Item key={index} interval={2000}>
                                 <img
@@ -48,10 +50,12 @@ export default function Dashboard() {
                             </Carousel.Item>
                         ))}
                     </Carousel>
+
+
                     <FeatureSection />
 
-                    <Categories  />
-                    <Container>
+                    <Categories />
+                    <Container >
                         <h2 className="text-center my-4">What Our Customers Say</h2>
                         <Row className="justify-content-center">
                             {reviews.map((review, index) => (
@@ -61,7 +65,6 @@ export default function Dashboard() {
                             ))}
                         </Row>
                     </Container>
-
                 </Col>
             </Row>
 

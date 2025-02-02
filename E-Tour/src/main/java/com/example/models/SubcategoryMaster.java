@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 public class SubcategoryMaster {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	@Column(nullable=false)
 	private int subCatMasterId;
 	

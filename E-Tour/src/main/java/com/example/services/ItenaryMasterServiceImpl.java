@@ -12,10 +12,6 @@ public class ItenaryMasterServiceImpl {
     @Autowired
     private ItenaryMasterRepository itenaryMasterRepository;
     
-    // Get All ItenaryMasters
-    public List<ItenaryMaster> getAllItenaryMasters() {
-        return itenaryMasterRepository.findAll();
-    }
 
     // Get ItenaryMaster by ID
     public List<ItenaryMaster> getItenaryMasterById(int tourId) {

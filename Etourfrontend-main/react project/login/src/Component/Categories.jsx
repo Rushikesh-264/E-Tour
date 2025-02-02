@@ -41,7 +41,7 @@ export default function Categories() {
                     backgroundRepeat: "no-repeat",
                     height: "75vh",
                     padding: "2rem",
-                    paddingInline:'8vw'
+                    paddingInline: '8vw'
                 }}
             >
                 <h1

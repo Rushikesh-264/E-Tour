@@ -1,9 +1,15 @@
 .feature-container {
-    display: flex;
-    justify-content: space-around;
-    background: #4189f9;
-    padding: 20px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; 
+  background: #4189f9; 
+  padding: 20px; 
+  overflow: hidden;
+  max-width: 100%; 
+  box-sizing: border-box; 
+}
+
+
   
   .feature-box {
     display: flex;

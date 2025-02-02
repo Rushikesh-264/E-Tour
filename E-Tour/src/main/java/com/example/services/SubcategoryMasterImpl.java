@@ -20,12 +20,5 @@ public class SubcategoryMasterImpl implements SubcategoryMasterServices {
 		return repository.findAll();	
 	}
 
-	@Override
-	public Optional<SubcategoryMaster> getSubCategoryById(int id) {
-		// TODO Auto-generated method stub
-		return repository.findById(id);
-	}
-    
-	
 	
 }

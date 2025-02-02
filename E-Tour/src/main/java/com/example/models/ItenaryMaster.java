@@ -1,5 +1,6 @@
 package com.example.models;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
@@ -57,10 +58,13 @@ public class ItenaryMaster {
 	@Column(nullable=false)
 	private int dayNo;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="tourId",nullable=false)
-    @JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tour_id", nullable = false, foreignKey = @ForeignKey(name = "FK_tour_itenary"))
+	@JsonIgnore
 	private Tours tours;
+
+
+
 	
 	private String images;
 	

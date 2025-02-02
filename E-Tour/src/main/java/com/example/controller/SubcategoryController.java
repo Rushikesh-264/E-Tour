@@ -26,11 +26,4 @@ public class SubcategoryController {
 	        return service.getAllSubcategory();
 	    }
 
-	    // Get subcategory by ID
-	    @GetMapping("/{id}")
-	    public ResponseEntity<SubcategoryMaster> getSubcategoryById(@PathVariable int id) {
-	        Optional<SubcategoryMaster> subcategory = service.getSubCategoryById(id);
-	        return subcategory.map(ResponseEntity::ok)
-	                          .orElseGet(() -> ResponseEntity.notFound().build());
-	    }
 }

@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 
 export default function ReviewCard({ name, review, image }) {
   return (
+    
     <Card style={{ width: "18rem", margin: "1rem", textAlign: "center" }}>
       <Card.Img
         variant="top"

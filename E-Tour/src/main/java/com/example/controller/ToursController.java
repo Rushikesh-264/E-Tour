@@ -1,15 +1,18 @@
 package com.example.controller;
 
+import com.example.models.ApiResponse;
 import com.example.models.Tours;
 import com.example.services.ToursServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/tours")
+@RequestMapping("/api/subcategory/tours")
 public class ToursController {
 
     @Autowired
@@ -17,13 +20,35 @@ public class ToursController {
 
     // Get all tours
     @GetMapping
-    public List<Tours> getAllTours() {
-        return toursService.getAllTours();
+    public ResponseEntity<List<Tours>> getAllTours() {
+        try {
+            List<Tours> tours = toursService.getAllTours();
+            return ResponseEntity.ok(tours);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    
+    
+    @GetMapping("/search")
+    public ResponseEntity<ApiResponse> searchTours(@RequestParam(required = false) String place, 
+                                                    @RequestParam(required = false) LocalDate startDate, 
+                                                    @RequestParam(required = false) LocalDate endDate) {
+
+    	// Return a successful response even if no tours are found, but include a message
+        try {
+            List<Tours> tours = toursService.searchTours(place, startDate, endDate);
+            if (tours.isEmpty()) {
+                ApiResponse response = new ApiResponse(tours, "No tours found matching the criteria");
+                return ResponseEntity.ok(response);  // Return 200 OK with empty list and message
+            }
+            ApiResponse response = new ApiResponse(tours, "Tours found");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    // Get tour by ID
-    @GetMapping("/{id}")
-    public Optional<Tours> getTourById(@PathVariable int id) {
-        return toursService.getTourById(id);
-    }
+
+
 }
