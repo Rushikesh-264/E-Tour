@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col, Navbar } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const navigate = useNavigate();
     
 

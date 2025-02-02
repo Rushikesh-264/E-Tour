@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../SubCategoriesCard.css"
 
-import { Container, Row, Col } from "react-bootstrap";
+
 
 import TourCategoryCard from "./TourCategorieCard";
 import { useLocation } from "react-router-dom";
 
 export default function TourCategories() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const location = useLocation();
     let category = location.state?.title || "Tour Packages";
     let imageurl = location.state?.image || "Image";
@@ -55,18 +58,6 @@ export default function TourCategories() {
                                 </div>
                             ))}
             </div>
-
-            
-            {/* <Container className="mt-5">
-                <Row>
-                    {tour.map((tourData, index) => (
-                        <Col key={index} xs={12} sm={6} md={4} className="mb-4">
-                            
-                            <TourCategoryCard {...tourData}/>
-                        </Col>
-                    ))}
-                </Row>
-            </Container> */}
         </div>
     );
 }

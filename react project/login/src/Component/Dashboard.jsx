@@ -1,10 +1,9 @@
 import React from "react";
-import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
 import Categories from "./Categories";
-import CategoriesCard from "./CatergoriesCard";
 import ReviewCard from "./ReviewCard";
 import FeatureSection from "./FeaturesSection";
-import SubCategoriesCard from "./SubCategoriesCard";
+
 const reviews = [
     { name: "John Doe", review: "Great experience! Highly recommend.", image: "https://randomuser.me/api/portraits/men/10.jpg" },
     { name: "Michel Lee", review: "Amazing service and friendly staff!", image: "https://randomuser.me/api/portraits/men/15.jpg" },

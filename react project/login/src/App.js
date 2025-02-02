@@ -10,10 +10,13 @@ import Footer from './Component/Footer';
 import SubCategories from './Component/SubCategories';
 import TourCategories from './Component/TourCategories';
 import RegisterForm from './Component/RegisterForm';
+import Iternary from './Component/Iternary';
+
 function App() {
   return (
     <>
       <NavBarComponet />
+      
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -24,6 +27,8 @@ function App() {
         <Route path="/SubCategories" element={<SubCategories />} />
         <Route path="/tourcatergories" element={<TourCategories />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/iternary" element={<Iternary/>}/> 
+        
       </Routes>
       <Footer/>
     </>
