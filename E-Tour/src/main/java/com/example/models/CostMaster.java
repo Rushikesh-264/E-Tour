@@ -16,13 +16,6 @@ public class CostMaster {
 		CostId = costId;
 	}
 
-	public double getCost() {
-		return cost;
-	}
-
-	public void setCost(double cost) {
-		this.cost = cost;
-	}
 
 	public int getSinglePersonCost() {
 		return singlePersonCost;
@@ -64,8 +57,6 @@ public class CostMaster {
 		this.tour = tour;
 	}
 
-	@Column(nullable=false)
-	private double cost;
 	
 	@Column(nullable=false)
 	private int singlePersonCost;

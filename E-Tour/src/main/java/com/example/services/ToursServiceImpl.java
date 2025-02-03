@@ -1,13 +1,12 @@
 package com.example.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.models.Tours;
-//import com.example.repositories.ToursRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import com.example.repository.*;
+
+
 @Service
 public class ToursServiceImpl implements ToursServices {
 
@@ -20,8 +19,10 @@ public class ToursServiceImpl implements ToursServices {
         return toursRepository.findAll();
     }
 
-    // Get a single tour by ID
-    public Optional<Tours> getTourById(int id) {
-        return toursRepository.findById(id);
-    }
+    //Get all tours based on the search
+	@Override
+	public List<Tours> searchTours(String name, LocalDate startDate, LocalDate endDate) {
+		return toursRepository.searchTours(name, startDate, endDate);
+	}
+
 }

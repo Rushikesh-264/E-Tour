@@ -8,17 +8,11 @@ import com.example.models.ItenaryMaster;
 import com.example.services.ItenaryMasterServiceImpl;
 
 @RestController
-@RequestMapping("/api/itenary")
+@RequestMapping("/api/subcategory/tours/itenary")
 public class ItenaryMasterController {
 
     @Autowired
     private ItenaryMasterServiceImpl itenaryMasterService;
-
-    // Get All ItenaryMasters
-    @GetMapping("/")
-    public ResponseEntity<List<ItenaryMaster>> getAllItenaryMasters() {
-        return ResponseEntity.ok(itenaryMasterService.getAllItenaryMasters());
-    }
 
     // Get ItenaryMaster by ID
     @GetMapping("/{id}")
