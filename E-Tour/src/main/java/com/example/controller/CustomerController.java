@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+
+
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/customers")
 @CrossOrigin(origins = "http://localhost:3000") 
@@ -18,32 +22,25 @@ public class CustomerController {
 
     // Register new customer
     @PostMapping("/register")
-    public ResponseEntity<?> registerCustomer(@RequestBody Customer customer) {
-        Customer savedCustomer = customerServices.saveCustomer(customer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);
+    public Customer registerCustomer(@RequestBody Customer customer) {
+        return customerServices.saveCustomer(customer);
     }
 
-//    // Get customer by ID
-//    @GetMapping("/{id}")
-//    public Optional<Customer> getCustomerById(@PathVariable Long id) {
-//        return customerServices.getCustomerById(id);
-//    }
+    // Get customer by ID
+    @GetMapping("/{id}")
+    public Optional<Customer> getCustomerById(@PathVariable Long id) {
+        return customerServices.getCustomerById(id);
+    }
 
     // Get customer by email for login
     @PostMapping("/login")
-    public ResponseEntity<?> loginCustomer(@RequestBody Customer customer)
-    {
-    	System.out.println(customer);
-    	boolean found = customerServices.getCustomerByEmail(customer);
-    	if(found)
-    	{
-    		return ResponseEntity.ok("Login Successfull");
-    	}
-    	
-    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid");
-//    	Map<String, String> errorResponse = new HashMap<>();
-//        errorResponse.put("message", "Invalid email or password.");
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    public Customer loginCustomer(@RequestBody Customer customer) {
+        Customer existingCustomer = customerServices.getCustomerByEmail(customer.getEmail());
+        if (existingCustomer != null && existingCustomer.getPassword().equals(customer.getPassword())) {
+            return existingCustomer;
+        }
+        return null; 
     }
 }
+
 
