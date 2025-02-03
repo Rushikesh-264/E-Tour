@@ -48,7 +48,7 @@ This application leverages modern technologies and is highly database-driven, of
 2. **.NET SDK 8.0+**  
 3. **Node.js 18+**  
 4. **Docker**  
-5. **MySQL 8** or **SQL Server**  
+5. **MySQL 8** 
 
 ### Steps to Run  
 1. **Clone the Repository:**  
