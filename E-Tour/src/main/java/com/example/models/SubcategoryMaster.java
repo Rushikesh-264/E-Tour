@@ -1,12 +1,13 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
 public class SubcategoryMaster {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	@Column(nullable=false)
 	private int subCatMasterId;
 	
@@ -60,6 +61,7 @@ public class SubcategoryMaster {
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="catMasterId",nullable=false)
+	@JsonIgnore
 	private CategoryMaster categoryMaster;	//Reference to the CategoryMaster Table
 	
 	@Column(nullable = false, length = 3)
