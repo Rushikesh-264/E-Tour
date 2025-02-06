@@ -1,9 +1,14 @@
 package com.example.services;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.DTO.ToursDTO;
 import com.example.models.Tours;
+
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.example.repository.*;
 
 
@@ -13,16 +18,31 @@ public class ToursServiceImpl implements ToursServices {
     @Autowired 
     private ToursRepository toursRepository;
 
-    // Get all tours
-   
-    public List<Tours> getAllTours() {
-        return toursRepository.findAll();
+    // Get all tours based on the SubcategoryId
+    public List<ToursDTO> getToursBySubcategoryId(Integer subcategoryId) {
+    	   List<Tours> tours = toursRepository.findBySubCategoryId(subcategoryId);
+           return tours.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
     //Get all tours based on the search
 	@Override
-	public List<Tours> searchTours(String name, LocalDate startDate, LocalDate endDate) {
-		return toursRepository.searchTours(name, startDate, endDate);
+	public List<ToursDTO> searchTours(String place, LocalDate startDate, LocalDate endDate) {
+		List<Tours> tours = toursRepository.searchTours(place, startDate, endDate);
+        return tours.stream().map(this::convertToDTO).collect(Collectors.toList());
 	}
 
+	// Convert Tours entity to ToursDTO
+    private ToursDTO convertToDTO(Tours tour) {
+        ToursDTO dto = new ToursDTO();
+        dto.setTourId(tour.getTourId());
+        dto.setPlace(tour.getPlace());
+        dto.setTourName(tour.getTourName());
+        dto.setImageUrl(tour.getImageUrl());
+        dto.setDurationDays(tour.getDurationDays());
+        dto.setDurationNights(tour.getDurationNights());
+        dto.setPrice((int) tour.getPrice());  // assuming price is a double, convert to int
+        dto.setStartDate(tour.getStartDate());
+        dto.setEndDate(tour.getEndDate());
+        return dto;
+    }
 }

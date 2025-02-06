@@ -22,7 +22,5 @@ public class HomeController {
 	{
 		return homeservices.getAllCategories();
 	}
-	
-	
 }
 

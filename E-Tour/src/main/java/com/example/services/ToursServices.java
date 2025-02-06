@@ -3,10 +3,10 @@ package com.example.services;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.example.models.Tours;
+import com.example.DTO.ToursDTO;
 
 public interface ToursServices {
 	
-	 List<Tours> getAllTours();
-	 List<Tours> searchTours(String name,LocalDate startDate,LocalDate endDate);
+	 List<ToursDTO> getToursBySubcategoryId(Integer ToursId);
+	 List<ToursDTO> searchTours(String name,LocalDate startDate,LocalDate endDate);
 }
