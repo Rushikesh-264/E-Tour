@@ -8,6 +8,17 @@ public class CostMaster {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int CostId;
 	
+	@Column(name="TwinSharingcost",nullable=false)
+	private int TwinSharingcost;
+	
+	private int extraPersonCost;
+	private int childWithBed;
+	private int childWitoutBed;
+	
+	@OneToOne
+	@JoinColumn(name="tourId",nullable=false)
+	private Tours tour;
+	
 	public int getCostId() {
 		return CostId;
 	}
@@ -16,20 +27,12 @@ public class CostMaster {
 		CostId = costId;
 	}
 
-	public double getCost() {
-		return cost;
+	public int getTwinSharingcost() {
+		return TwinSharingcost;
 	}
 
-	public void setCost(double cost) {
-		this.cost = cost;
-	}
-
-	public int getSinglePersonCost() {
-		return singlePersonCost;
-	}
-
-	public void setSinglePersonCost(int singlePersonCost) {
-		this.singlePersonCost = singlePersonCost;
+	public void setTwinSharingcost(int singlePersonCost) {
+		this.TwinSharingcost = singlePersonCost;
 	}
 
 	public int getExtraPersonCost() {
@@ -63,19 +66,5 @@ public class CostMaster {
 	public void setTour(Tours tour) {
 		this.tour = tour;
 	}
-
-	@Column(nullable=false)
-	private double cost;
-	
-	@Column(nullable=false)
-	private int singlePersonCost;
-	
-	private int extraPersonCost;
-	private int childWithBed;
-	private int childWitoutBed;
-	
-	@OneToOne
-	@JoinColumn(name="tourId",nullable=false)
-	private Tours tour;
 	
 }
