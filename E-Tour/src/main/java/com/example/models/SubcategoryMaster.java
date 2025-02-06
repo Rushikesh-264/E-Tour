@@ -8,8 +8,25 @@ import jakarta.persistence.*;
 public class SubcategoryMaster {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(nullable=false)
+	@Column(name="subCatMasterId",nullable=false)
 	private int subCatMasterId;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="catMasterId",nullable=false)
+	@JsonIgnore
+	private CategoryMaster categoryMaster;	//Reference to the CategoryMaster Table
+	
+	@Column(name ="subCatId",nullable = false, length = 3)
+	private String subCatId;		//example->EUP,SEA,KSH
+	
+	@Column(name = "subCatName",nullable = false, length = 255)
+	private String subCatName;
+	
+	@Column(name ="subCatImagePath",nullable = true, length = 255)
+	private String subCatImagePath;
+	
+	@Column(nullable = false)
+	private Boolean flag;
 	
 	public int getSubCatMasterId() {
 		return subCatMasterId;
@@ -58,23 +75,6 @@ public class SubcategoryMaster {
 	public void setFlag(Boolean flag) {
 		this.flag = flag;
 	}
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="catMasterId",nullable=false)
-	@JsonIgnore
-	private CategoryMaster categoryMaster;	//Reference to the CategoryMaster Table
-	
-	@Column(nullable = false, length = 3)
-	private String subCatId;		//example->EUP,SEA,KSH
-	
-	@Column(nullable = false, length = 255)
-	private String subCatName;
-	
-	@Column(nullable = true, length = 255)
-	private String subCatImagePath;
-	
-	@Column(nullable = false)
-	private Boolean flag;
 	
 	public SubcategoryMaster() {}
 	
