@@ -7,21 +7,23 @@ package com.example.models;
 
 import java.util.List;
 
+import com.example.DTO.ToursDTO;
+
 public class ApiResponse {
-    private List<Tours> tours;
+    private List<ToursDTO> tours;
     private String message;
 
-    public ApiResponse(List<Tours> tours, String message) {
+    public ApiResponse(List<ToursDTO> tours, String message) {
         this.tours = tours;
         this.message = message;
     }
 
     // Getters and setters
-    public List<Tours> getTours() {
+    public List<ToursDTO> getTours() {
         return tours;
     }
 
-    public void setTours(List<Tours> tours) {
+    public void setTours(List<ToursDTO> tours) {
         this.tours = tours;
     }
 

@@ -8,15 +8,15 @@ import com.example.models.ItenaryMaster;
 import com.example.services.ItenaryMasterServiceImpl;
 
 @RestController
-@RequestMapping("/api/subcategory/tours/itenary")
+@RequestMapping("/api/subcategory")
 public class ItenaryMasterController {
 
     @Autowired
     private ItenaryMasterServiceImpl itenaryMasterService;
 
     // Get ItenaryMaster by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<List<ItenaryMaster>> getItenaryMasterById(@PathVariable("id") int tourId) {
+    @GetMapping("/{categoryId}/tours/{tourid}/itenary")
+    public ResponseEntity<List<ItenaryMaster>> getItenaryMasterById(@PathVariable("tourid") int tourId) {
         return ResponseEntity.ok(itenaryMasterService.getItenaryMasterById(tourId));
     }
-}
+}
