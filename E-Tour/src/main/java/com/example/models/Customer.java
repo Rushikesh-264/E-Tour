@@ -1,10 +1,11 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
-@Data
+
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,7 @@ public class Customer {
     private String lastName;
 
     @Column(nullable = false)
+    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String address;
