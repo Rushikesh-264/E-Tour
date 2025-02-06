@@ -7,6 +7,6 @@ import com.example.models.SubcategoryMaster;
 
 public interface SubcategoryMasterServices {
       
-	List<SubcategoryMaster> getAllSubcategory();
+	List<SubcategoryMaster> getAllSubcategory(Integer CategoryId);
 	
 }

@@ -13,27 +13,33 @@ public class Tours {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="tourid")
 	private int tourId;
 
 	private String place;
 	
+	@Column(name="tourname")
 	private String tourName;
-	@Column(nullable = false)
+	@Column(name = "imageurl")
 	private String imageUrl;
-	@Column(nullable = false)
+	@Column(name = "durationDays",nullable = false)
 	private String durationDays;
 	@Column(nullable = false)
 	private String durationNights;
 	@Column(nullable = false)
 	private double price;
+
+	@OneToMany(mappedBy = "tours", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ItenaryMaster> itenaries = new ArrayList<>();
 	
-	
+	@Column(name = "startDate")
 	private LocalDate startDate;
+	@Column(name = "endDate")
 	private LocalDate endDate;
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "subCategoryMasterId", nullable = false)
+	 @JoinColumn(name = "subcategoryMaster", referencedColumnName = "subCatMasterId", nullable = false)
 	@JsonIgnore
 	private SubcategoryMaster subcategoryMaster;
 
@@ -92,11 +98,6 @@ public class Tours {
 	public void setSubcategoryMaster(SubcategoryMaster subcategoryMaster) {
 		this.subcategoryMaster = subcategoryMaster;
 	}
-
-	@OneToMany(mappedBy = "tours", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ItenaryMaster> itenaries = new ArrayList<>();
-
-	
 	public List<ItenaryMaster> getItenaries() {
 		return itenaries;
 	}

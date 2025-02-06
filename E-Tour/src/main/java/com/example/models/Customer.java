@@ -1,13 +1,18 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity
+
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="customerid")
     private Long Customerid;
 
+    @Column(name="email")
     private String email;
 
     @Column(nullable = false)
@@ -19,6 +24,7 @@ public class Customer {
     private String lastName;
 
     @Column(nullable = false)
+    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String address;

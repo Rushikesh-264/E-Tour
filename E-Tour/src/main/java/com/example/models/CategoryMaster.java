@@ -1,6 +1,5 @@
 package com.example.models;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -9,12 +8,23 @@ public class CategoryMaster {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int catMaster_id;
-	public int getCatMaster_id() {
-		return catMaster_id;
+	@Column(name="categoryid")
+	private int catMasterId;
+	
+	@Column(name="subcategoryid",nullable=false)
+	private int SubCat_Id;
+	@Column(nullable=false,length=100)
+	private String Category_Name;
+	@Column(nullable=false,length=255)
+	private String Category_Image_Path;
+	@Column(nullable=false)
+	private Boolean Flag;
+	
+	public int getCatMasterid() {
+		return catMasterId;
 	}
-	public void setCatMaster_id(int CatMaster_id) {
-		catMaster_id = CatMaster_id;
+	public void setCatMasterid(int CatMaster_id) {
+		catMasterId = CatMaster_id;
 	}
 	public int getSubCat_Id() {
 		return SubCat_Id;
@@ -22,7 +32,7 @@ public class CategoryMaster {
 	public void setSubCat_Id(int subCat_Id) {
 		SubCat_Id = subCat_Id;
 	}
-	public String getCategory_Name() {
+	public String getCategory_Name() {	
 		return Category_Name;
 	}
 	public void setCategory_Name(String category_Name) {
@@ -40,19 +50,6 @@ public class CategoryMaster {
 	public void setFlag(Boolean flag) {
 		Flag = flag;
 	}
-	
-	
-	
-	
-	
-	@Column(nullable=false)
-	private int SubCat_Id;
-	@Column(nullable=false,length=100)
-	private String Category_Name;
-	@Column(nullable=false,length=255)
-	private String Category_Image_Path;
-	@Column(nullable=false)
-	private Boolean Flag;
-	
+
 	
 }
