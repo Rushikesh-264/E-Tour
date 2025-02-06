@@ -18,8 +18,6 @@ public class TransactionsStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;  // Changed to Long for auto-generated numeric IDs
     
-    
-    
     @Column(nullable = false)
     private String packageName;
     

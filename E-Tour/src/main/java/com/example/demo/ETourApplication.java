@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages="com.example.*")
 @EnableJpaRepositories(basePackages="com.example.*")
 public class ETourApplication {
-
+ 
 	public static void main(String[] args) {
 		SpringApplication.run(ETourApplication.class, args);
 	}

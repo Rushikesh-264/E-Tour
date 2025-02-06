@@ -14,6 +14,11 @@ public class Passenger {
 	@JoinColumn(name="bookingID", referencedColumnName="bookingID", nullable=false)
 	//private BookingHeader bookingheader;
 	
+	private Date Birthdate;
+	private String Type;
+	private double Amount;
+	
+	
 	private String Paxname;
 	
 	public int getPaxid() {
@@ -46,9 +51,6 @@ public class Passenger {
 	public void setAmount(double amount) {
 		Amount = amount;
 	}
-	private Date Birthdate;
-	private String Type;
-	private double Amount;
 	
 	
 }
