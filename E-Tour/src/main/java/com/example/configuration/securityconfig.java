@@ -29,7 +29,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class securityconfig {
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception{
+	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception{  //controls authentication rules in spring security
 		security.csrf(crf->crf.disable());   //recommended handle
 		security.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.NEVER));   //Jsession ID is not created here we will handle our session
 		
@@ -40,8 +40,8 @@ public class securityconfig {
 				//which requests to be authorized
 //				.requestMatchers("/api/signIn").permitAll());
 				
-				.requestMatchers("/api/customers/signIn").authenticated()
-				.requestMatchers("/api/customers/register").permitAll());
+				.requestMatchers("/api/customers/signIn").authenticated().anyRequest().permitAll());
+//				.requestMatchers("/api/customers/register").permitAll());
 //				.requestMatchers("/api/**").hasRole("ADMIN"));    //while in db: ROLE_ADM, "path"= which methods/url
 				//.requestMatchers("/**").permitAll());       //permits all 
 		security.httpBasic(Customizer.withDefaults());       //

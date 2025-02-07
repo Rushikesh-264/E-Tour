@@ -18,7 +18,7 @@ public class CustomerController {
 
     @Autowired
     private CustomerServices customerServices;
-
+    
     // Register new customer
     @PostMapping("/register")
     public ResponseEntity<?> registerCustomer(@RequestBody Customer customer) {
@@ -31,7 +31,7 @@ public class CustomerController {
   public Optional<Customer> getCustomerById(@PathVariable Long id) {
         return customerServices.getCustomerById(id);
    }
-  
+  //tushar@example.com, Tushar@1234
   @PostMapping("/signIn")
   public ResponseEntity<String> signIn(){
   	return new ResponseEntity<>("Signin Successfully",HttpStatus.OK);
