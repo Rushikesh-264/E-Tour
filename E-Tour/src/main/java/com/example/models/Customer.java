@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
-
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

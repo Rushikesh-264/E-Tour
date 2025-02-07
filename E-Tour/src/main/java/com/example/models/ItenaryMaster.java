@@ -12,6 +12,63 @@ public class ItenaryMaster {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int ItenaryId;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tour_id", nullable = false, foreignKey = @ForeignKey(name = "FK_tour_itenary"))
+	@JsonIgnore
+	private Tours tours;
+	
+	private String images;
+	
+	@Column(nullable=false,length=1000)
+	private String Description;
+	
+	@Column(nullable=false)
+	private int dayNo;
+	
+	@Column(name="detailsFr",length=1000)
+	private String detailsFr;
+	
+	@Column(name="detailsEs",length=1000)
+    private String detailsEs;
+	
+	@Column(name="detailsMr",length=1000)
+    private String detailsMr;
+	
+	@Column(name="detailsHi",length=1000)
+    private String detailsHi;	
+	
+	public String getDetailsFr() {
+		return detailsFr;
+	}
+
+	public void setDetailsFr(String detailsFr) {
+		this.detailsFr = detailsFr;
+	}
+
+	public String getDetailsEs() {
+		return detailsEs;
+	}
+
+	public void setDetailsEs(String detailsDe) {
+		this.detailsEs = detailsDe;
+	}
+
+	public String getDetailsMr() {
+		return detailsMr;
+	}
+
+	public void setDetailsMr(String detailsMr) {
+		this.detailsMr = detailsMr;
+	}
+
+	public String getDetailsHi() {
+		return detailsHi;
+	}
+
+	public void setDetailsHi(String detailsHi) {
+		this.detailsHi = detailsHi;
+	}
+	
 	public int getItenaryId() {
 		return ItenaryId;
 	}
@@ -52,20 +109,4 @@ public class ItenaryMaster {
 		this.tours = tours;
 	}
 
-	@Column(nullable=false,length=1000)
-	private String Description;
-	
-	@Column(nullable=false)
-	private int dayNo;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tour_id", nullable = false, foreignKey = @ForeignKey(name = "FK_tour_itenary"))
-	@JsonIgnore
-	private Tours tours;
-
-
-
-	
-	private String images;
-	
 }

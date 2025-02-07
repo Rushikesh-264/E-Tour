@@ -43,6 +43,7 @@ public class PaymentConfirmationServiceImpl implements IPaymentConfirmationServi
         bookingHeader.setNumberOfPassengers(bookingdetails.getNumberOfPassengers()); 
         bookingHeader.setTourname(bookingdetails.getTourname()); 
         bookingHeader.setCustomername(bookingdetails.getCustomername()); 
+        bookingHeader.setEmail(bookingdetails.getEmail());
 
         // Setting booking and payment status
         bookingHeader.setBookingStatus(BookingStatus.CONFIRMED); 

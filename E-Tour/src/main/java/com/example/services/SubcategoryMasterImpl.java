@@ -18,6 +18,5 @@ public class SubcategoryMasterImpl implements SubcategoryMasterServices {
 		return repository.findByCategoryId(CategoryId); 
 			
 	}
-
 	
 }

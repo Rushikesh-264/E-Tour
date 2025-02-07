@@ -12,6 +12,5 @@ public interface ItenaryMasterRepository extends JpaRepository<ItenaryMaster,Int
 	   // Custom query to fetch ItenaryMaster by tourId
     @Query( nativeQuery=true , value="SELECT * FROM itenarymaster WHERE tour_id = :tourId")
     List<ItenaryMaster> findByTourId(@Param("tourId") int tourId);
-	
-
+  
 }
