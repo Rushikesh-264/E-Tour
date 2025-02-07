@@ -15,17 +15,14 @@ public class CategoryMaster {
 	private int SubCat_Id;
 	@Column(nullable=false,length=100)
 	private String Category_Name;
-	@Column(nullable=false,length=255)
-	private String Category_Image_Path;
+	
+	@Column(nullable = false, columnDefinition = "TEXT")
+    private String categoryImagePath;
+
+
 	@Column(nullable=false)
 	private Boolean Flag;
-	
-	public int getCatMasterid() {
-		return catMasterId;
-	}
-	public void setCatMasterid(int CatMaster_id) {
-		catMasterId = CatMaster_id;
-	}
+
 	public int getSubCat_Id() {
 		return SubCat_Id;
 	}
@@ -38,18 +35,24 @@ public class CategoryMaster {
 	public void setCategory_Name(String category_Name) {
 		Category_Name = category_Name;
 	}
-	public String getCategory_Image_Path() {
-		return Category_Image_Path;
-	}
-	public void setCategory_Image_Path(String category_Image_Path) {
-		Category_Image_Path = category_Image_Path;
-	}
 	public Boolean getFlag() {
 		return Flag;
 	}
 	public void setFlag(Boolean flag) {
 		Flag = flag;
 	}
-
+	
+	public int getCatMasterId() {
+		return catMasterId;
+	}
+	public void setCatMasterId(int catMasterId) {
+		this.catMasterId = catMasterId;
+	}
+	public String getCategoryImagePath() {
+		return categoryImagePath;
+	}
+	public void setCategoryImagePath(String categoryImagePath) {
+		this.categoryImagePath = categoryImagePath;
+	}
 	
 }

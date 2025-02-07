@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.example.models.SubcategoryMaster;
 import com.example.services.SubcategoryMasterServices;
 @RestController
 @RequestMapping("api/subcategory")
+@CrossOrigin(origins="http://localhost:3000")
 public class SubcategoryController {
 
     @Autowired
@@ -25,8 +27,10 @@ public class SubcategoryController {
     public ResponseEntity<List<SubcategoryMaster>> getAllSubcategories(@PathVariable Integer categoryId) {
         List<SubcategoryMaster> subcategories = service.getAllSubcategory(categoryId);
         if (subcategories.isEmpty()) {
+        	
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
         }
+        System.out.println("Getting subcategories");
         return ResponseEntity.ok(subcategories);
     }
 }

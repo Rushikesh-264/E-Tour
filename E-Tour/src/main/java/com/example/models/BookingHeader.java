@@ -39,13 +39,7 @@ public class BookingHeader {
 
     @Column(name = "numberOfPassengers", nullable = true)
     private int numberOfPassengers = 1; // Default to 1
-
-    @Column(name = "tourname", nullable = true)
-    private String tourname;
-
-    @Column(name = "customerName", nullable = true)
-    private String customerName;
-
+    
     // Enum for booking status
     @Enumerated(EnumType.STRING)
     @Column(name = "bookingStatus", nullable = false)
@@ -56,6 +50,31 @@ public class BookingHeader {
     @Column(name = "paymentStatus", nullable = false)
     private PaymentStatus paymentStatus = PaymentStatus.PENDING;
 
+
+    @Column(name = "tourname", nullable = true)
+    private String tourname;
+
+    @Column(name = "customerName", nullable = true)
+    private String customerName;
+    
+	@Column(name = "email")
+    private String email;
+    
+    public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
     public int getBookingID() {
 		return bookingID;
 	}
