@@ -36,5 +36,3 @@ public class CustomerServiceImpl implements CustomerServices{
         return customerRepository.findByEmail(email);
     }*/
 }
-
-

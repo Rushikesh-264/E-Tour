@@ -2,6 +2,10 @@ package com.example.controller;
 
 import com.example.models.Customer;
 import com.example.services.CustomerServices;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,19 +35,19 @@ public class CustomerController {
 
     // Get customer by email for login
     @PostMapping("/login")
-    public ResponseEntity<?> loginCustomer(@RequestBody Customer customer)
-    {
-    	System.out.println(customer);
-    	boolean found = customerServices.getCustomerByEmail(customer);
-    	if(found)
-    	{
-    		return ResponseEntity.ok("Login Successfull");
-    	}
-    	
-    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid");
-//    	Map<String, String> errorResponse = new HashMap<>();
-//        errorResponse.put("message", "Invalid email or password.");
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
-    }
-}
+    public ResponseEntity<Map<String, String>> loginCustomer(@RequestBody Customer customer) {
+        System.out.println(customer);
+        boolean found = customerServices.getCustomerByEmail(customer);
 
+        if (found) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Login Successful");
+            return ResponseEntity.ok(response);
+        }
+
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("message", "Invalid email or password.");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+}
