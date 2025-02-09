@@ -3,6 +3,9 @@ package com.example.controller;
 import com.example.models.Customer;
 import com.example.services.CustomerServices;
 
+import java.util.HashMap;
+import java.util.Map;
+=======
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +42,20 @@ public class CustomerController {
   /*
     // Get customer by email for login
     @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> loginCustomer(@RequestBody Customer customer) {
+        System.out.println(customer);
+        boolean found = customerServices.getCustomerByEmail(customer);
+
+        if (found) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Login Successful");
+            return ResponseEntity.ok(response);
+        }
+
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("message", "Invalid email or password.");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+=======
     public ResponseEntity<?> loginCustomer(@RequestBody Customer customer)
     {
     	System.out.println(customer);
@@ -55,5 +72,5 @@ public class CustomerController {
 //
  */
     }
-}
 
+}

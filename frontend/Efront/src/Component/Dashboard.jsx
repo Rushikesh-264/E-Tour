@@ -1,10 +1,10 @@
-import React from "react";
-import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
+// import React, { useEffect, useState } from "react";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
 import Categories from "./Categories";
-import CategoriesCard from "./CatergoriesCard";
+
 import ReviewCard from "./ReviewCard";
 import FeatureSection from "./FeaturesSection";
-import SubCategoriesCard from "./SubCategoriesCard";
+
 const reviews = [
     { name: "John Doe", review: "Great experience! Highly recommend.", image: "https://randomuser.me/api/portraits/men/10.jpg" },
     { name: "Michel Lee", review: "Amazing service and friendly staff!", image: "https://randomuser.me/api/portraits/men/15.jpg" },
@@ -13,22 +13,24 @@ const reviews = [
 const slides = [
     {
         image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop",
-        title: "First Slide",
-        description: "Description for the first slide."
+        title: "Explore Dubai",
+        description: "Discover the stunning skyscrapers, luxury shopping, and vibrant nightlife of Dubai."
     },
     {
         image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=2070&auto=format&fit=crop",
-        title: "Second Slide",
-        description: "Description for the second slide."
+        title: "Experience France",
+        description: "Enjoy the romance of Paris, the art of the Louvre, and the beauty of the French countryside. ",
     },
     {
         image: "https://plus.unsplash.com/premium_photo-1661919589683-f11880119fb7?q=80&w=2070&auto=format&fit=crop",
-        title: "Third Slide",
-        description: "Description for the third slide."
+        title: "Incredible India",
+        description: "Explore India's diverse landscapes, from the Taj Mahal in Agra to the serene backwaters of Kerala. "
     }
 ];
 
 export default function Dashboard() {
+
+    
     return (
         <div >
             <Row className="mx-0"> 
@@ -50,6 +52,7 @@ export default function Dashboard() {
                             </Carousel.Item>
                         ))}
                     </Carousel>
+                    {/* <SearchBar />  */}
 
 
                     <FeatureSection />

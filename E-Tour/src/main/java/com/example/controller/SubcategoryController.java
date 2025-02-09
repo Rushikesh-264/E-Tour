@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.models.SubcategoryMaster;
 import com.example.services.SubcategoryMasterServices;
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/subcategory")
 @CrossOrigin(origins="http://localhost:3000")
 public class SubcategoryController {

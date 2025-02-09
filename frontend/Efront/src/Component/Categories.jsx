@@ -1,33 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import CategoriesCard from "./CatergoriesCard";
+import SearchBar from "./SearchBar";
 // import CategoriesCard from "./CategoriesCard";
 
-const cardData = [
-    {
-        title: "International Package",
-        text: "Explore the best international destinations.",
-        imageUrl:
-            "https://plus.unsplash.com/premium_photo-1661919589683-f11880119fb7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        buttonLabel: "Explore",
-    },
-    {
-        title: "Domestic Package",
-        text: "Discover beautiful places in your country.",
-        imageUrl:
-            "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        buttonLabel: "Discover",
-    },
-    {
-        title: "Holiday Special",
-        text: "Get amazing deals for the holiday season.",
-        imageUrl:
-            "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        buttonLabel: "Book Now",
-    },
-];
+
 
 export default function Categories() {
+    const [categories, setCategories] = useState([]);
+    
+    useEffect(() => {
+        fetch("http://localhost:8086/api") 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => setCategories(data))
+            .catch(error => console.error("Error fetching categories:", error));
+    }, []);
+    console.log(categories)
     return (
         <>
             <div
@@ -39,11 +32,12 @@ export default function Categories() {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
-                    height: "75vh",
+                    height: "auto",
                     padding: "2rem",
                     paddingInline: '8vw'
                 }}
             >
+                <SearchBar /> 
                 <h1
                     style={{
                         marginLeft: "1rem",
@@ -56,13 +50,14 @@ export default function Categories() {
                 </h1>
 
                 <Row className="g-4">
-                    {cardData.map((data, index) => (
+                    {categories.map((data, index) => (
                         <Col key={index} md={4} className="mb-4">
                             <CategoriesCard
-                                title={data.title}
+                                title={data.category_Name}
                                 text={data.text}
-                                imageUrl={data.imageUrl}
-                                buttonLabel={data.buttonLabel}
+                                imageUrl={ data.category_Image_Path}
+                                id={data.catMasterid}
+                                buttonLabel={"Explore"}
                             />
                         </Col>
                     ))}
