@@ -30,7 +30,9 @@ public class BookingController {
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No cost details found for the given tour ID.");
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e)
+        {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred.");
         }
     }

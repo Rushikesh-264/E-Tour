@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.models.CategoryMaster;
 import com.example.services.HomeServices;
 
+import org.apache.log4j.Logger;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,11 +20,14 @@ public class HomeController {
 	@Autowired 
 	private HomeServices homeservices;
 
+	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
 	@GetMapping("")
 	public List<CategoryMaster> getAllCategories()
 	{
-		return homeservices.getAllCategories();
+		List<CategoryMaster> categories = homeservices.getAllCategories();
+		logger.info("getAllCategories() method called");
+		logger.debug("Categories fetched: "+categories);
+		return categories;
 	}
 }
-

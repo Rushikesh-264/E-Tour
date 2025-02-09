@@ -12,7 +12,7 @@ import com.example.models.BookingHeader;
 import com.example.services.IPaymentConfirmationService;
 
 @RestController
-@RequestMapping("/api/subcategory/tours/Booking/BookingConfirmation")
+@RequestMapping("/api/subcategory/{categoryId}/tours/{tourId}/itenary/booking/bookingConfirmation")
 public class PaymentConfirmationController {
 	
 	@Autowired

@@ -17,6 +17,7 @@ import com.example.services.SubcategoryMasterServices;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/subcategory")
+@CrossOrigin(origins="http://localhost:3000")
 public class SubcategoryController {
 
     @Autowired
@@ -27,8 +28,10 @@ public class SubcategoryController {
     public ResponseEntity<List<SubcategoryMaster>> getAllSubcategories(@PathVariable Integer categoryId) {
         List<SubcategoryMaster> subcategories = service.getAllSubcategory(categoryId);
         if (subcategories.isEmpty()) {
+        	
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
         }
+        System.out.println("Getting subcategories");
         return ResponseEntity.ok(subcategories);
     }
 }
