@@ -25,14 +25,13 @@ public class CustomerServiceImpl implements CustomerServices{
 //    }
 
 	@Override
-	public boolean getCustomerByEmail(Customer customer) {
-		return customerRepository.findByEmail(customer.getEmail(),customer.getPassword());
+	public Customer getCustomerByEmailandPassword(Customer customer) {
+		return customerRepository.findByEmailAndPassword(customer.getEmail(),customer.getPassword());
 		
 	}
-
-    // Find a customer by email
-   /* @Override
-    public Customer getCustomerByEmail(String email) {
-        return customerRepository.findByEmail(email);
-    }*/
+	@Override
+	public Customer getCustomerByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
+   
 }

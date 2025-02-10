@@ -5,38 +5,83 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const BookingSummary = () => {
     const [passengers, setPassengers] = useState([]);
-    const [profileDetails, setProfileDetails] = useState({});
-    const [totalPrice, setTotalPrice] = useState(0);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const {
+        durationDays,
+        durationNights,
+        selectedStartDate,
+        selectedEndDate,
+        tourName,
+        profiledata,
+        totalBaseAmount,
+        totalTaxAmount,
+        totalPrice,
+        passengerCount,
+        tourId,
+        customerId,
+        customername,
+        bookingDate,imageUrl
+    } = location.state || {};
+
+    const email = localStorage.getItem('email');
 
     useEffect(() => {
         const storedPassengers = JSON.parse(localStorage.getItem("passengers")) || [];
-        
-        
-        const storedTotalPrice = localStorage.getItem("totalPrice") || 0;
-
         setPassengers(storedPassengers);
-        
-        setTotalPrice(parseFloat(storedTotalPrice));
     }, []);
-    const location = useLocation();
-    const {  durationDays, durationNights, endDate, startDate, tourName,  } = location.state || {}
-    const navigate = useNavigate()
-    const confirmbooking= ()=>{
-      navigate('/payment')
-    }
+
+    const confirmBooking = () => {
+        navigate('/payment', {
+            state: {
+                tourId,
+                totalBaseAmount,
+                totalPrice,
+                totalTaxAmount,
+                passengerCount,
+                customername,
+                customerId,
+                tourName,
+                email,
+                bookingDate
+            }
+        });
+    };
+
+    console.log("State data:", {
+        tourId,
+        totalBaseAmount,
+        totalPrice,
+        totalTaxAmount,
+        passengerCount,
+        customername,
+        customerId,
+        tourName,
+        email,
+        bookingDate,imageUrl
+    });
 
     return (
+        <div>
+            <div className="header" style={{ backgroundImage: `url(${imageUrl})` }}>
+                <div className="overlay"></div>
+                <h1 className="tour-name">{tourName}</h1>
+            </div>
+        
         <Container className="mt-4 p-4 border rounded bg-light">
             <h2 className="text-center mb-4">Booking Summary</h2>
 
             {/* Tour Details */}
             <Card className="mb-4 p-3 shadow-sm">
                 <Card.Body>
-                    <Card.Title className="text-primary">{tourName}</Card.Title>
+                    {/* <Card.Title className="text-primary">{tourName}</Card.Title> */}
                     <Card.Text>
-                        {durationDays} &  {durationNights} |
-                        Start Date: {startDate} - End Date: {endDate}
+                        {durationDays} & {durationNights} |
+                        Start Date: {selectedStartDate} - End Date: {selectedEndDate},
+                        
                     </Card.Text>
+                    
                 </Card.Body>
             </Card>
 
@@ -45,11 +90,14 @@ const BookingSummary = () => {
                 <Card.Body>
                     <Card.Title>Profile Details</Card.Title>
                     <Row>
-                        <Col md={6}><strong>Name:</strong> {profileDetails.name}</Col>
-                        <Col md={6}><strong>Mobile:</strong> {profileDetails.mobile}</Col>
+                        <Col md={6}>
+                            <strong>Name:</strong> {profiledata.firstName} {profiledata.lastName}
+                        </Col>
                     </Row>
                     <Row className="mt-2">
-                        <Col md={6}><strong>Email:</strong> {profileDetails.email}</Col>
+                        <Col md={6}>
+                            <strong>Email:</strong> {email}
+                        </Col>
                     </Row>
                 </Card.Body>
             </Card>
@@ -94,12 +142,15 @@ const BookingSummary = () => {
             </Card>
 
             {/* Total Price */}
-            <Card className="p-3 shadow-sm text-center">
-                <h4>Total Price: ₹{totalPrice.toFixed(2)}</h4>
+            <Card className="p-3 shadow-sm text-center" style={{display:'felx', flexDirection:'row' ,justifyContent:'space-around'}}>
+                <p>Base Price: ₹{totalBaseAmount}</p>
+                <p>Tax Price: ₹{totalTaxAmount}</p>
+                <p>Total Price: ₹{totalPrice.toFixed(2)}</p>
+                <p>Total Passengers: {passengerCount}</p>
             </Card>
-            <Button type='primary' onClick={confirmbooking}  className="my-3" >Confirm booking</Button>
-
+            <Button type='primary' onClick={confirmBooking} className="my-3">Confirm booking</Button>
         </Container>
+        </div>
     );
 };
 

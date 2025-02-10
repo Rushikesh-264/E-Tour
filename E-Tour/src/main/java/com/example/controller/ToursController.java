@@ -29,6 +29,7 @@ public class ToursController {
             {
             	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
             }
+            System.out.println(tours);
             return ResponseEntity.ok(tours);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

@@ -1,7 +1,7 @@
 import { Card, Row, Col } from "react-bootstrap";
 import React from "react";
 
-const ItineraryCard = ({ dayNo, description, images }) => {
+const ItineraryCard = ({ dayNo, description, imageUrl }) => {
     
     return (
         <Card className="mb-4 shadow-sm">
@@ -13,7 +13,7 @@ const ItineraryCard = ({ dayNo, description, images }) => {
                     </Card.Body>
                 </Col>
                 <Col md={4}>
-                    {images && <Card.Img variant="top" src={images} alt={`Day ${dayNo}`} style={{ 
+                    {imageUrl && <Card.Img variant="top" src={imageUrl} alt={`Day ${dayNo}`} style={{ 
                         height: "7rem",
                         width:"50%" ,
                         marginLeft:"10rem",

@@ -30,7 +30,9 @@ const LoginForm = ({ show, handleClose, setLoggedIn }) => {
             body: JSON.stringify({ email, password }),
         })
             .then((response) => {
-                if (response.ok) return response.json();
+                if (response.ok) {
+                    localStorage.setItem("email", email);
+                    return response.json();}
                 if (response.status === 401) {
                     throw new Error('Invalid credentials');
                 }
