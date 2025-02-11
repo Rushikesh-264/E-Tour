@@ -13,18 +13,19 @@ function NavBarComponent() {
     const handleCloseLogin = () => setShowLogin(false);
 
     const handleLogout = () => {
-        localStorage.removeItem('token'); // Remove the token from localStorage
-        setLoggedIn(false); // Update the logged-in state
-        navigate('/'); // Redirect to homepage or login page
+        localStorage.removeItem('email'); 
+        setLoggedIn(false); 
+        navigate('/'); 
     };
 
     useEffect(() => {
-        // Check if the token exists in localStorage
+        
         const token = localStorage.getItem('token');
         if (token) {
-            setLoggedIn(true);  // User is logged in
+            setLoggedIn(true);  
         }
     }, []);
+    
 
     return (
         <>
@@ -46,7 +47,7 @@ function NavBarComponent() {
             >
                 <Container>
                     <Navbar.Brand as={Link} to="/dashboard" className="fw-bold text-white">
-                        <span style={{ color: "#3D8BFD" }}>TRAVEL</span> VISTA
+                        <span style={{ color: "#3D8BFD" }}>TRAVEL</span>VISTA
                     </Navbar.Brand>
 
                     <Nav className="mx-auto d-flex gap-4">
@@ -64,6 +65,9 @@ function NavBarComponent() {
                     </Nav>
 
                     <Nav>
+                        
+
+
                         <NavDropdown
                             title={<FaUserCircle size={30} color="white" />}
                             id="userDropdown"

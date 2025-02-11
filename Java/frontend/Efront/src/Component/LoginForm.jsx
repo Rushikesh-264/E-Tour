@@ -30,7 +30,9 @@ const LoginForm = ({ show, handleClose, setLoggedIn }) => {
             body: JSON.stringify({ email, password }),
         })
             .then((response) => {
-                if (response.ok) return response.json();
+                if (response.ok) {
+                    localStorage.setItem("email", email);
+                    return response.json();}
                 if (response.status === 401) {
                     throw new Error('Invalid credentials');
                 }
@@ -49,7 +51,7 @@ const LoginForm = ({ show, handleClose, setLoggedIn }) => {
                     alert('You have successfully logged in!');
                     
                     handleClose(); // Close modal
-                    navigate('/');  // Navigate to home page
+                    // navigate('/');  // Navigate to home page
                 }
             })
             .catch((error) => setErrorMessage(error.message || 'Something went wrong. Please try again later.'));

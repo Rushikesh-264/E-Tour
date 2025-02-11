@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 const TourCategoryCard = ({ tourId,durationDays,durationNights,endDate,
     imageUrl,price,startDate,tourName,subcategoryMaster }) => {
-     const navigate = useNavigate();
-
+    const navigate = useNavigate();
     const handleViewDetails = () => {
         // navigate('/itinerary', { state: { tourName, imageurl, tourId,subcategoryMaster} });
         navigate('/itinerary', { state: {tourId, tourName, 
             imageUrl, durationDays, durationNights, price, subcategoryMaster,endDate,startDate } });
     };
+    // console.log(subcategoryMaster)
 
 
 
@@ -26,7 +26,7 @@ imageUrl} className="package-image"/>
                 <Card.Text className="package-text">
                     <strong>{durationDays} Days / {durationNights} Nights</strong>
                     <br />
-                    <strong>starts:{startDate} Ends:{endDate} </strong>
+                    {/* <strong>starts:{startDate} Ends:{endDate} </strong> */}
                     {/* <div className="description-text">
                         {description}
                     </div> */}

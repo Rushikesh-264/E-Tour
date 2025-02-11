@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Row, Col, Card, Alert, InputGroup } from "react-bootstrap"; // Add InputGroup here
+import { Container, Form, Button, Row, Col, Card, Alert, InputGroup } from "react-bootstrap";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -8,29 +8,37 @@ import {
   FaCreditCard,
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./PaymentPage.css"; // Custom CSS file
-import { useNavigate } from "react-router-dom";
-
+import "./PaymentPage.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Destructure the state data from location object
+  const {
+    tourId,
+    totalBaseAmount,
+    totalPrice,
+    totalTaxAmount,
+    passengerCount,
+    customername,
+    customerId,
+    tourName,
+    email,
+    bookingDate,
+  } = location.state || {};  // Ensure a fallback empty object in case state is undefined
+
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [cardholderName, setCardholderName] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [error, setError] = useState("");
-  const navigate= useNavigate()
-  const validateCardNumber = (number) => {
-    return /^\d{16}$/.test(number); // Simple validation for 16 digits
-  };
 
-  const validateExpiryDate = (date) => {
-    return /^(0[1-9]|1[0-2])\/\d{2}$/.test(date); // MM/YY format
-  };
-
-  const validateCVV = (cvv) => {
-    return /^\d{3,4}$/.test(cvv); // 3 or 4 digits
-  };
+  const validateCardNumber = (number) => /^\d{16}$/.test(number);
+  const validateExpiryDate = (date) => /^(0[1-9]|1[0-2])\/\d{2}$/.test(date);
+  const validateCVV = (cvv) => /^\d{3,4}$/.test(cvv);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,11 +62,48 @@ const PaymentPage = () => {
       setError("Please enter the cardholder's name.");
       return;
     }
+  
 
-    setError("");
-    alert("Payment successful! Thank you for your purchase.");
-    // Add your payment processing logic here
-    navigate('/dashboard');
+    const formattedBookingDate = new Date(bookingDate).toISOString(); // Full ISO-8601 date-time string
+   
+
+   
+    const paymentData = {
+      tourId: parseInt(tourId, 10),
+      tourAmount: parseFloat(totalBaseAmount),
+      totalAmount: parseFloat(totalPrice),
+      totalTaxAmount: parseFloat(totalTaxAmount),
+      numberOfPassengers: parseInt(passengerCount, 10),
+      customername: customername,
+      customerId: parseInt(customerId, 10),
+      tourname: tourName,
+      email,
+      bookingDate: formattedBookingDate
+  };
+  
+  const passenger =localStorage.getItem('passengers')
+    console.log(paymentData);
+
+    fetch('http://localhost:8086/api/subcategory/tours/Booking/BookingConfirmation/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(paymentData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        
+        console.log('Payment and booking saved successfully:', data);
+        setError("");
+        alert("Payment successful! Thank you for your purchase.");
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        
+        console.error('Error saving payment and booking:', error);
+        setError("An error occurred during the payment process. Please try again.");
+      });
   };
 
   return (

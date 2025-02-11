@@ -48,7 +48,7 @@ const RegisterPage = () => {
             setConfirmPassword('');
             setErrorMessage('');
             setPasswordError('');
-            navigate('/login'); // Navigate to login after successful registration
+            navigate('/dashboard'); // Navigate to login after successful registration
         } catch (error) {
             console.error('❌ Error:', error.message);
         }
