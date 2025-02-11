@@ -1,7 +1,3 @@
-/*
- * This class is for more informative response when no tours are found, 
- * we can create a custom response object that holds both a status and a message along with the list of tours. 
- * */
 
 package com.example.models;
 

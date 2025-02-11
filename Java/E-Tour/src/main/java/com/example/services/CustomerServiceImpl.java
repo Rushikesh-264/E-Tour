@@ -33,9 +33,15 @@ public class CustomerServiceImpl implements CustomerServices{
     }
 
     @Override
-	public Customer getCustomerByEmail(String email) {
-		return customerRepository.findByEmail(email).get();
+	public  Optional<Customer> getCustomerByEmail(String email) {
+		return customerRepository.findByEmail(email);
 		
+	}
+
+	@Override
+	public boolean getCustomerByEmail(Customer customer) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 
