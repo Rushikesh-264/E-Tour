@@ -1,6 +1,7 @@
 # E-Tour
 
-**Platform:** Jakarta EE, MS.Net Core, React JS, SQL Server  
+**Platform:** Jakarta EE, MS.Net Core, React JS, MYSQL
+
 **Duration:** 1 Month  
 
 ## Description  
