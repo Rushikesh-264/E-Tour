@@ -1,58 +1,68 @@
-# E-Tour
+E-Tour 🌍
+Platform:
 
-**Platform:** Jakarta EE, MS.Net Core, React JS, MYSQL
+🖥 Jakarta EE, .NET Core, React JS, MySQL
 
-**Duration:** 1 Month  
+⏳ Duration: 1 Month
+Description
 
-## Description  
-E-Tour is a **B2C web application** designed to streamline the operations of group tour operators managing international, domestic, and event-based tours. The system enables users to browse or search for tours from various categories, view comprehensive details such as itineraries, costs, departure dates, and book tours by adding each passenger.
+E-Tour is a B2C web application designed to streamline the operations of group tour operators managing international, domestic, and event-based tours.
+
+🔹 Users can browse/search for tours from various categories.
+🔹 View comprehensive details such as itineraries, costs, departure dates.
+🔹 Book tours by adding passenger-wise details.
 
 This application leverages modern technologies and is highly database-driven, offering flexibility and ease of maintenance.
+🌟 Tech Stack
+Backend
 
----
+✅ Spring Framework 6 with Spring Boot 3
+✅ Maven 3 for dependency management
+✅ REST API for communication
+✅ MySQL 8 with JPA for database management
+✅ Docker for containerization
+✅ JWT for authentication
+✅ Microservices Architecture
+Microsoft Stack
 
-## Tech Stack  
-### **Backend**  
-- **Spring Framework 6** with **Spring Boot 3**  
-- **Maven 3** for dependency management  
-- **REST API** for communication  
-- **MySQL 8** with **JPA** for database management  
-- **Docker** for containerization  
-- **JWT** for authentication  
-- **Microservices Architecture**  
+✅ .NET Core 8.0
+✅ Web API Core 8.0
+✅ SQL Server
+✅ Entity Framework Core 8.0
+Frontend
 
-### **Microsoft Stack**  
-- **Dot Net Core**  
-- **Web API Core 8.0**  
-- **SQL Server**  
-- **Entity Framework Core 8.0**  
+✅ React JS 18
+🚀 Features
 
-### **Frontend**  
-- **React JS 18**  
+✅ Browse and search tours from various categories.
+✅ View detailed tour information, including:
 
----
+    🗺 Itinerary
+    💰 Costs
+    📅 Departure Dates
+    ✅ Book tours with passenger-wise details.
+    ✅ Multi-language Itinerary Support (I18N) 🌍
+    Languages Supported: 🇬🇧 English, 🇮🇳 Hindi, 🇮🇳 Marathi, 🇫🇷 French, 🇪🇸 Spanish
 
-## Features  
-- Browse and search tours from various categories.  
-- View detailed information such as:  
-  - **Itinerary**  
-  - **Costs**  
-  - **Departure Dates**  
-- Book tours with passenger-wise details.  
-- Robust, database-driven system for flexibility and maintenance.
+📌 The Itinerary Page supports I18N (Internationalization) for dynamic multi-language descriptions.
 
----
+✅ Robust database-driven system ensuring flexibility and easy maintenance.
+📥 Installation
+🛠 Prerequisites
 
-## Installation  
-### Prerequisites  
-1. **Java 17+**  
-2. **.NET SDK 8.0+**  
-3. **Node.js 18+**  
-4. **Docker**  
-5. **MySQL 8** 
+Make sure you have the following installed:
 
-### Steps to Run  
-1. **Clone the Repository:**  
-   ```bash
-   git clone https://github.com/username/e-tour.git
-   cd e-tour
+    Java 17+
+    .NET SDK 8.0+
+    Node.js 18+
+    Docker
+    MySQL 8
+
+
+📌 Steps to Run
+
+1️⃣ Clone the Repository
+  git clone https://github.com/username/e-tour.git
+  cd e-tour
+
+
