@@ -62,7 +62,7 @@ Make sure you have the following installed:
 📌 Steps to Run
 
 1️⃣ Clone the Repository
-  git clone https://github.com/username/e-tour.git
+  git clone https://github.com/Rushikesh-264/e-tour.git
   cd e-tour
 
 
