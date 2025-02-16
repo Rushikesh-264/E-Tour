@@ -14,28 +14,28 @@ E-Tour is a B2C web application designed to streamline the operations of group t
 
 This application leverages modern technologies and is highly database-driven, offering flexibility and ease of maintenance.
 🌟 Tech Stack
+
 Backend
+    ✅ Spring Framework 6 with Spring Boot 3
+    ✅ Maven 3 for dependency management
+    ✅ REST API for communication
+    ✅ MySQL 8 with JPA for database management
+    ✅ Docker for containerization
+    ✅ JWT for authentication
+    ✅ Microservices Architecture
 
-✅ Spring Framework 6 with Spring Boot 3
-✅ Maven 3 for dependency management
-✅ REST API for communication
-✅ MySQL 8 with JPA for database management
-✅ Docker for containerization
-✅ JWT for authentication
-✅ Microservices Architecture
 Microsoft Stack
+    ✅ .NET Core 8.0
+    ✅ Web API Core 8.0
+    ✅ SQL Server
+    ✅ Entity Framework Core 8.0
 
-✅ .NET Core 8.0
-✅ Web API Core 8.0
-✅ SQL Server
-✅ Entity Framework Core 8.0
 Frontend
-
-✅ React JS 18
+    ✅ React JS 18
+    
 🚀 Features
-
-✅ Browse and search tours from various categories.
-✅ View detailed tour information, including:
+    ✅ Browse and search tours from various categories.
+    ✅ View detailed tour information, including:
 
     🗺 Itinerary
     💰 Costs
@@ -51,7 +51,6 @@ Frontend
 🛠 Prerequisites
 
 Make sure you have the following installed:
-
     Java 17+
     .NET SDK 8.0+
     Node.js 18+
