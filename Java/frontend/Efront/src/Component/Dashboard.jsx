@@ -58,7 +58,7 @@ export default function Dashboard() {
                     <FeatureSection />
 
                     <Categories />
-                    <Container >
+                    <Container id="reviews" >
                         <h2 className="text-center my-4">What Our Customers Say</h2>
                         <Row className="justify-content-center">
                             {reviews.map((review, index) => (

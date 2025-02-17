@@ -17,7 +17,7 @@ export default function Itinerary() {
     const [selectedEndDate, setSelectedEndDate] = useState("");
     const [i18lag, setI18Lang] = useState("en");
     const [profiledata, setProfileData] = useState({})
-    const { tourName, imageUrl, price, durationDays, durationNights, tourId, subcategoryMaster ,id,title} = location.state || {};
+    const { tourName, imageUrl, price, durationDays, durationNights, tourId, subCatMasterId  ,id,title} = location.state || {};
     const email = localStorage.getItem("email")
     const handleBookNow = () => {
         if (email) {
@@ -45,7 +45,7 @@ export default function Itinerary() {
     useEffect(() => {
         if (profiledata && Object.keys(profiledata).length > 0) {
             navigate('/booking', { 
-                state: { tourName, imageUrl, price, durationDays, durationNights, tourId, subcategoryMaster, selectedStartDate, selectedEndDate, profiledata ,tourId,customername,customerId,imageUrl}
+                state: { tourName, imageUrl, price, durationDays, durationNights, tourId, subCatMasterId , selectedStartDate, selectedEndDate, profiledata ,tourId,customername,customerId,imageUrl}
             });
         }
     }, [profiledata]); 
@@ -65,7 +65,7 @@ export default function Itinerary() {
     
     useEffect(() => {
         if (tourId) {
-            fetch(`http://localhost:8086/api/subcategory/${subcategoryMaster}/tours/${tourId}/itenary?lang=${i18lag}`)
+            fetch(`http://localhost:8086/api/subcategory/${subCatMasterId}/tours/${tourId}/itenary?lang=${i18lag}`)
                 .then(response => response.json())
                 .then(data => setItineraryData(data))
                 .catch(error => console.error("Error fetching itinerary:", error));
@@ -82,13 +82,13 @@ export default function Itinerary() {
         })
         .catch(error => console.error("Error fetching itinerary:", error));
     }
-    }, [tourId, subcategoryMaster, i18lag, id]);
+    }, [tourId, subCatMasterId , i18lag, id]);
 
     console.log(itineraryData)
     
     
     useEffect(() => {
-        fetch(`http://localhost:8086/api/subcategory/${subcategoryMaster}/tours/${tourId}/departures`)
+        fetch(`http://localhost:8086/api/subcategory/${subCatMasterId}/tours/${tourId}/departures`)
             .then(response => response.json())
             .then(data => {
 
@@ -99,7 +99,7 @@ export default function Itinerary() {
                 setDepartureDates(formattedDates);
             })
             .catch(error => console.error("Error fetching departure dates:", error));
-    }, [subcategoryMaster, tourId]);
+    }, [subCatMasterId , tourId]);
 
     const handleDateChange = (e) => {
         const selectedStart = e.target.value;
