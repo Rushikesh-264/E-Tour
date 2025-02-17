@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Table, Row, Col, Card } from "react-bootstrap";
+import { Container, Form, Button, Table, Row, Col, Card, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -17,8 +17,9 @@ const BookingPage = () => {
         taxAmount: ""
     });
 
+    const [errors, setErrors] = useState({});
     const location = useLocation();
-    const { durationDays, imageUrl,durationNights, selectedStartDate, selectedEndDate, tourName, tourId, subcategoryMaster, profiledata , customername,customerId } = location.state || {};
+    const { durationDays, imageUrl, durationNights, selectedStartDate, selectedEndDate, tourName, tourId, subcategoryMaster, profiledata, customername, customerId } = location.state || {};
     const [totalPrice, setTotalPrice] = useState(0);
     const [priceList, setPriceList] = useState({});
     const [bookingDate, setBookingDate] = useState("");
@@ -31,7 +32,7 @@ const BookingPage = () => {
                 setPriceList(data);
             })
             .catch(error => console.error("Error fetching prices:", error));
-    }, []);
+    }, [subcategoryMaster, tourId]);
 
     useEffect(() => {
         localStorage.setItem("passengers", JSON.stringify(passengers));
@@ -43,10 +44,11 @@ const BookingPage = () => {
         let updatedData = { ...formData, [name]: value };
         if (name === "passengerType") {
             const basePrices = {
-                "Twin Sharing": priceList.twinSharingcost || 0,
+                "Twin Sharing": priceList.twinSharingCost || 0,
                 "Extra Person": priceList.extraPersonCost || 0,
                 "Child with Bed": priceList.childWithBed || 0,
                 "Child without Bed": priceList.childWitoutBed || 0,
+                "Single Person": priceList.singlePersonCost || 0,
             };
             const basePrice = basePrices[value] || 0;
             const taxAmount = basePrice * GST_RATE;
@@ -63,23 +65,26 @@ const BookingPage = () => {
         const nameRegex = /^[A-Za-z]+$/;
         const mobileRegex = /^\d{10}$/;
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
-            alert("First Name and Last Name should contain only letters.");
-            return false;
+        const newErrors = {};
+
+        if (!nameRegex.test(firstName)) {
+            newErrors.firstName = "First Name should contain only letters.";
+        }
+        if (!nameRegex.test(lastName)) {
+            newErrors.lastName = "Last Name should contain only letters.";
         }
         if (!mobileRegex.test(mobile)) {
-            alert("Mobile number should be exactly 10 digits.");
-            return false;
+            newErrors.mobile = "Mobile number should be exactly 10 digits.";
         }
         if (!emailRegex.test(email)) {
-            alert("Enter a valid email address.");
-            return false;
+            newErrors.email = "Enter a valid email address.";
         }
         if (!dob || new Date(dob) > new Date()) {
-            alert("Date of Birth cannot be in the future.");
-            return false;
+            newErrors.dob = "Date of Birth cannot be in the future.";
         }
-        return true;
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleAddPassenger = () => {
@@ -104,96 +109,77 @@ const BookingPage = () => {
         setBookingDate(bookingDate);
         navigate('/bookingsummary', {
             state: {
-                durationDays, 
-                durationNights, 
-                selectedStartDate, 
-                selectedEndDate, 
-                tourName, 
-                profiledata, 
-                totalBaseAmount, 
-                totalTaxAmount, 
+                durationDays,
+                durationNights,
+                selectedStartDate,
+                selectedEndDate,
+                tourName,
+                profiledata,
+                totalBaseAmount,
+                totalTaxAmount,
                 totalPrice,
                 passengerCount: passengers.length,
                 tourId,
-                customername,customerId,
-                bookingDate,imageUrl
+                customername, customerId,
+                bookingDate, imageUrl
             }
         });
     };
 
     return (
-        <div>
-            <div className="header" style={{ backgroundImage: `url(${imageUrl})` }}>
-                <div className="overlay"></div>
-                <h1 className="tour-name">{tourName}</h1>
-                
+        <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
+            <div className="header" style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", padding: "50px 0", textAlign: "center", color: "white" }}>
+                <div className="overlay" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.5)" }}></div>
+                <h1 className="tour-name" style={{ position: "relative", zIndex: 1 }}>{tourName}</h1>
             </div>
-            <Container className="mt-4 p-4 border rounded bg-light">
-                <Card className="mb-4 p-3 shadow-sm mt-4 p-4 border rounded bg-light">
+            <Container className="mt-4 p-4 border rounded" style={{ backgroundColor: "#ffffff", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+                <Card className="mb-4 p-3 shadow-sm border rounded" style={{ backgroundColor: "#e3f2fd" }}>
                     <Card.Body>
-                        {/* <Card.Title className="text-primary">{tourName}</Card.Title> */}
-                        <Card.Text>
-                            Days: {durationDays} & Nights: {durationNights} | Start Date: {selectedStartDate} - End Date: {selectedEndDate}
+                        <Card.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
+                            🗓️ Days: {durationDays} | 🌙 Nights: {durationNights} | 📅 {selectedStartDate} - {selectedEndDate}
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <h2 className="text-center">Passenger Details</h2>
+                <h2 className="text-center" style={{ color: "#007bff" }}>Passenger Details</h2>
                 <Form>
                     <Row>
                         <Col md={6}>
-                            <Form.Group>
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-                            </Form.Group>
+                            <Form.Control type="text" placeholder="First Name" name="firstName" value={formData.firstName} onChange={handleChange} className="mb-3" />
+                            {errors.firstName && <Alert variant="danger">{errors.firstName}</Alert>}
                         </Col>
                         <Col md={6}>
-                            <Form.Group>
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-                            </Form.Group>
+                            <Form.Control type="text" placeholder="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} className="mb-3" />
+                            {errors.lastName && <Alert variant="danger">{errors.lastName}</Alert>}
                         </Col>
                     </Row>
                     <Row>
                         <Col md={6}>
-                            <Form.Group>
-                                <Form.Label>Mobile Number</Form.Label>
-                                <Form.Control type="text" name="mobile" value={formData.mobile} onChange={handleChange} />
-                            </Form.Group>
+                            <Form.Control type="text" placeholder="Mobile Number" name="mobile" value={formData.mobile} onChange={handleChange} className="mb-3" />
+                            {errors.mobile && <Alert variant="danger">{errors.mobile}</Alert>}
                         </Col>
                         <Col md={6}>
-                            <Form.Group>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} />
-                            </Form.Group>
+                            <Form.Control type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} className="mb-3" />
+                            {errors.email && <Alert variant="danger">{errors.email}</Alert>}
                         </Col>
                     </Row>
                     <Row>
                         <Col md={4}>
-                            <Form.Group>
-                                <Form.Label>Date of Birth</Form.Label>
-                                <Form.Control type="date" name="dob" value={formData.dob} onChange={handleChange} max={new Date().toISOString().split("T")[0]} />
-                            </Form.Group>
+                            <Form.Control type="date" name="dob" value={formData.dob} onChange={handleChange} className="mb-3" />
+                            {errors.dob && <Alert variant="danger">{errors.dob}</Alert>}
                         </Col>
                         <Col md={4}>
-                            <Form.Group>
-                                <Form.Label>Passenger Type</Form.Label>
-                                <Form.Control as="select" name="passengerType" value={formData.passengerType} onChange={handleChange}>
-                                    <option disabled>passenger type</option>
-                                    <option>Twin Sharing</option>
-                                    <option>Extra Person</option>
-                                    <option>Child with Bed</option>
-                                    <option>Child without Bed</option>
-                                </Form.Control>
-                            </Form.Group>
+                            <Form.Control as="select" name="passengerType" value={formData.passengerType} onChange={handleChange} className="mb-3">
+                                <option disabled>Passenger Type</option>
+                                <option>Twin Sharing</option>
+                                <option>Extra Person</option>
+                                <option>Child with Bed</option>
+                                <option>Child without Bed</option>
+                                <option>Single Person</option>
+                            </Form.Control>
                         </Col>
-                        <Col md={4}>
-                            <Form.Group>
-                                <Form.Label>Price (with GST)</Form.Label>
-                                <Form.Control type="text" name="price" value={formData.price} disabled />
-                            </Form.Group>
-                        </Col>
+                        <Col md={4}><Form.Control type="text" name="price" value={formData.price} disabled className="mb-3" /></Col>
                     </Row>
-                    <Button className="mt-3" onClick={handleAddPassenger}>Add Passenger</Button>
+                    <Button className="mt-3" onClick={handleAddPassenger} style={{ backgroundColor: "#007bff", borderColor: "#007bff" }}>Add Passenger</Button>
                 </Form>
                 {passengers.length > 0 && (
                     <>
@@ -226,16 +212,14 @@ const BookingPage = () => {
                                         <td><Button variant="danger" onClick={() => handleRemovePassenger(index)}>Remove</Button></td>
                                     </tr>
                                 ))}
-
-                        </tbody>
-                    </Table>
-                        <Button type='primary' onClick={confirmBooking} className="my-3" >Confirm booking</Button>
-                    <h4>Total Price (including GST): ₹{totalPrice.toFixed(2)}</h4>
-                </>
-            )}
-        </Container>
+                            </tbody>
+                        </Table>
+                        <Button type='primary' onClick={confirmBooking} className="my-3" style={{ backgroundColor: "#28a745", borderColor: "#28a745" }}>Confirm Booking</Button>
+                        <h4>Total Price (including GST): ₹{totalPrice.toFixed(2)}</h4>
+                    </>
+                )}
+            </Container>
         </div>
-
     );
 };
 

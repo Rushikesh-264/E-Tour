@@ -14,6 +14,7 @@ import Itinerary from "./Component/Itinerary"; // Corrected import
 import BookingPage from "./Component/BookingPage";
 import BookingSummary from "./Component/BookingSummary";
 import PaymentPage from "./Component/PaymentPage"; // Make sure to import PaymentPage
+import Profile from "./Component/Profile";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/bookingsummary" element={<BookingSummary />} />
         <Route path="/payment" element={<PaymentPage />} /> 
+        <Route path="/Profile" element={<Profile />} /> 
       </Routes>
       <Footer />
     </>

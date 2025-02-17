@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
     
 
 const TourCategoryCard = ({ tourId,durationDays,durationNights,endDate,
-    imageUrl,price,startDate,tourName,subcategoryMaster }) => {
+    imageUrl,price,startDate,tourName,subCatMasterId  }) => {
     const navigate = useNavigate();
     const handleViewDetails = () => {
         // navigate('/itinerary', { state: { tourName, imageurl, tourId,subcategoryMaster} });
         navigate('/itinerary', { state: {tourId, tourName, 
-            imageUrl, durationDays, durationNights, price, subcategoryMaster,endDate,startDate } });
+            imageUrl, durationDays, durationNights, price, subCatMasterId ,endDate,startDate } });
     };
-    // console.log(subcategoryMaster)
+    console.log("subcategory master",subCatMasterId )
 
 
 
@@ -31,7 +31,7 @@ imageUrl} className="package-image"/>
                         {description}
                     </div> */}
                 </Card.Text>
-                <h5 className="package-price">₹{price}</h5>
+                {/* <h5 className="package-price">₹{price}</h5> */}
                 <Button variant="primary" className="mt-2" onClick={handleViewDetails}>
                     View Details
                 </Button>

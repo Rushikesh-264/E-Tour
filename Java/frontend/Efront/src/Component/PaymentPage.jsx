@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Row, Col, Card, Alert, InputGroup } from "react-bootstrap";
+import { Container, Form, Button, Row, Col, Card, Alert, InputGroup, Modal } from "react-bootstrap";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -35,6 +35,7 @@ const PaymentPage = () => {
   const [cardholderName, setCardholderName] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [error, setError] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // State for success modal
 
   const validateCardNumber = (number) => /^\d{16}$/.test(number);
   const validateExpiryDate = (date) => /^(0[1-9]|1[0-2])\/\d{2}$/.test(date);
@@ -62,12 +63,9 @@ const PaymentPage = () => {
       setError("Please enter the cardholder's name.");
       return;
     }
-  
 
     const formattedBookingDate = new Date(bookingDate).toISOString(); // Full ISO-8601 date-time string
-   
-
-   
+    const passengers = JSON.parse(localStorage.getItem('passengers')) || []; // Retrieve stored passengers
     const paymentData = {
       tourId: parseInt(tourId, 10),
       tourAmount: parseFloat(totalBaseAmount),
@@ -78,10 +76,10 @@ const PaymentPage = () => {
       customerId: parseInt(customerId, 10),
       tourname: tourName,
       email,
-      bookingDate: formattedBookingDate
-  };
-  
-  const passenger =localStorage.getItem('passengers')
+      bookingDate: formattedBookingDate,
+      passengers: passengers, // Include passengers in the request
+    };
+
     console.log(paymentData);
 
     fetch('http://localhost:8086/api/subcategory/tours/Booking/BookingConfirmation/save', {
@@ -93,17 +91,19 @@ const PaymentPage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
+        setShowSuccessModal(true); 
         console.log('Payment and booking saved successfully:', data);
         setError("");
-        alert("Payment successful! Thank you for your purchase.");
-        navigate('/dashboard');
       })
       .catch((error) => {
-        
         console.error('Error saving payment and booking:', error);
         setError("An error occurred during the payment process. Please try again.");
       });
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate('/dashboard'); // Redirect to dashboard after closing modal
   };
 
   return (
@@ -224,6 +224,19 @@ const PaymentPage = () => {
           </Col>
         </Row>
       </Container>
+
+      {/* Success Modal */}
+      <Modal show={showSuccessModal} onHide={handleCloseSuccessModal} centered>
+        <Modal.Body className="text-center p-5">
+          <div className="success-animation">
+            <h2 className="text-success">Congratulations! 🎉</h2>
+            <p>Your payment was successful!</p>
+            <Button variant="success" onClick={handleCloseSuccessModal}>
+              Continue
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

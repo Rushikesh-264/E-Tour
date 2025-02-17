@@ -41,6 +41,7 @@ export default function Categories() {
             "buttonLabel": "Explore"
         }
     ]
+    console.log(categories)
     
     
     return (
@@ -59,7 +60,7 @@ export default function Categories() {
                     paddingInline: '8vw'
                 }}
             >
-                <SearchBar />
+                {/* <SearchBar /> */}
                 <h1
                     style={{
                         marginLeft: "1rem",
@@ -76,8 +77,8 @@ export default function Categories() {
                         <Col key={index} md={4} className="mb-4">
                             <CategoriesCard
                                 title={data.category_Name}
-                                text={'Explore the packages'}
-                                imageUrl={data.category_Image_Path}
+                                text={'Explore the packages'}   
+                                imageUrl={data.categoryImagePath}
                                 id={data.catMasterid}
                                 buttonLabel={"Explore"}
                                 

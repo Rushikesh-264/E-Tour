@@ -5,7 +5,7 @@ const CategoryCardtoIternat = ({ title, imageUrl, id, text, buttonLabel }) => {
     const navigate = useNavigate(); // ✅ Fixed function name
 
     const handleNavigation = () => {
-      navigate('/itinerary', { state: { id: 9, title ,imageUrl }});
+      navigate('/itinerary', { state: { subCatMasterId :2,tourId: 9, title ,imageUrl }});
 
     };
     
