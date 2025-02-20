@@ -1,4 +1,4 @@
-<h1>**E-TOUR 🌍**</h1>
+<h1>E-TOUR 🌍</h1>
 
 ##**PLATFORM**
 🖥 JAKARTA EE, .NET CORE, REACT JS, MySQL
