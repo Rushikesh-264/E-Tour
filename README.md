@@ -1,11 +1,11 @@
 <h1>E-TOUR 🌍</h1>
 
-##**PLATFORM**
+<h2>PLATFORM</h2>
 🖥 JAKARTA EE, .NET CORE, REACT JS, MySQL
 
 ⏳ DURATION: 1 MONTH
 
-##**DESCRIPTION**
+<h2>DESCRIPTION</h2>
 
 E-TOUR is a B2C WEB APPLICATION designed to streamline the operations of GROUP TOUR OPERATORS managing INTERNATIONAL, DOMESTIC, AND EVENT-BASED TOURS.
 
@@ -14,7 +14,7 @@ E-TOUR is a B2C WEB APPLICATION designed to streamline the operations of GROUP T
 🔹 Book tours by adding passenger-wise details.
 
 This application leverages MODERN TECHNOLOGIES and is HIGHLY DATABASE-DRIVEN, offering FLEXIBILITY AND EASE OF MAINTENANCE.
-🌟 TECH STACK
+<h2>🌟 TECH STACK</h2>
 BACKEND
 
 ✅ SPRING FRAMEWORK 6 WITH SPRING BOOT 3
