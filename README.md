@@ -63,28 +63,28 @@ Make sure you have the following installed:<br>
 
 <br><h2>**Screenshots**</h2><br>
 **HomePage**<br>
-![WhatsApp Image 2025-02-17 at 13 53 31_0ef490e9](https://github.com/user-attachments/assets/5a7f534e-01d3-4276-a6c2-19d976a2aa13)
-![WhatsApp Image 2025-02-17 at 13 53 29_7c52c26b](https://github.com/user-attachments/assets/9ea4d91f-2f9e-4a42-aeaf-61e8454c3064)
+![Image](https://github.com/user-attachments/assets/79350582-d132-4e5e-8dd5-728410625681)
+![Image](https://github.com/user-attachments/assets/e3edfc1f-b408-4d3a-8cd1-cbb61e97f647)
+![Image](https://github.com/user-attachments/assets/fd38377c-29c3-4ff6-8eaf-49d7a68c5361)
 
-<br><br>
-<h2>Subcategories</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 30_45615aeb](https://github.com/user-attachments/assets/e5e882ca-3053-4f6f-9568-ad81a16ed8ca)
+Subcategories
+![Image](https://github.com/user-attachments/assets/e140b01f-52e7-4e05-9db5-1dd0c2f8582c)
 
-<h2>Tours</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 29_04b30d5d](https://github.com/user-attachments/assets/bc37dbb7-a23d-4da0-b386-a7519679c46a)
+Tours
+![Image](https://github.com/user-attachments/assets/ec1b13db-f38f-47b3-9592-183ce930dd89)
 
-<h2>Itinerary</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 28_24580e58](https://github.com/user-attachments/assets/575e5193-2eb4-41e5-8d01-6c05b6b53bd7)
+Itinerary</h2><br>
+![Image](https://github.com/user-attachments/assets/aa107664-d0da-4790-abb9-235b46ba2e83)
 
-<h2>Booking Details</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 27_0e7861c5](https://github.com/user-attachments/assets/c9270c5c-bea4-48c1-9d1e-e456bf4935fc)
+Booking Details
+![Image](https://github.com/user-attachments/assets/04a6fc82-4340-42ba-aad6-b1b5be6be525)
 
-<h2>Booking Summary</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 30_c2dcefd3](https://github.com/user-attachments/assets/b9477613-f5b3-4a53-8468-4ec674cc5d98)
+Booking Summary
+![Image](https://github.com/user-attachments/assets/5ae3ef20-da2b-4331-8e37-7bfbed49b52b)
 
-<h2>Payment</h2><br>
-![WhatsApp Image 2025-02-17 at 13 53 28_fcbff14e](https://github.com/user-attachments/assets/8bc16412-ff70-40a6-abf8-100ee55534b8)
-![WhatsApp Image 2025-02-17 at 13 53 27_46d95b21](https://github.com/user-attachments/assets/a07bb735-496e-4e39-8e56-869409dca589)
+Payment
+![Image](https://github.com/user-attachments/assets/42bfe59e-a49c-4693-af79-6737bd25c5dc)
+![Image](https://github.com/user-attachments/assets/2bb363d9-b721-4136-b1a1-61a5206e3d98)
 
 
 
